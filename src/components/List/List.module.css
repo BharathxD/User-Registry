@@ -9,8 +9,16 @@
     padding: 10px;
     border-radius: 10px;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .ulList li:last-of-type {
     margin-bottom: 0;
+}
+
+.ulList li span {
+    background-color: #4b4b4b;
+    border-radius: 10px;
+    padding: 10px;
 }

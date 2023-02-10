@@ -39,7 +39,7 @@ export const Input: React.FC<{
         <ErrorModal
           title={getIsError.title}
           message={getIsError.message}
-          isError={() => {
+          closeDialogue={() => {
             setIsError(undefined);
           }}
         />
