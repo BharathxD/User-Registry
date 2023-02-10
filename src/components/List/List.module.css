@@ -1,24 +1,24 @@
 .ulList {
-    margin: 0;
-    list-style-type: none;
-    padding: 0;
+  margin: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 .ulList li {
-    background-color: #242424;
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
+  background-color: #242424;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .ulList li:last-of-type {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .ulList li span {
-    background-color: #4b4b4b;
-    border-radius: 10px;
-    padding: 10px;
+  background-color: #4b4b4b;
+  border-radius: 10px;
+  padding: 10px;
 }

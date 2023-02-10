@@ -1,22 +1,22 @@
 .inputText {
-    margin-right: 10px;
-    height: 35px;
-    border-radius: 10px;
-    outline-color: transparent;
-    border: 1px solid #505050;
-    min-width: 250px;
-    width: 100%;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.719);
+  margin-right: 10px;
+  height: 35px;
+  border-radius: 10px;
+  outline-color: transparent;
+  border: 1px solid #505050;
+  min-width: 250px;
+  width: 100%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.719);
 }
 
 .inputText:focus {
-    outline: 1px solid rgba(255, 255, 255, 0.719);
+  outline: 1px solid rgba(255, 255, 255, 0.719);
 }
 
 .form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 }
