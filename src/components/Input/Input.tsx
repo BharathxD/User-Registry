@@ -6,15 +6,16 @@ import { ErrorModal } from "../UI/ErrorModal";
 export const Input: React.FC<{
   getData: (text: string, age: number) => void;
 }> = (props) => {
+  const userNameInputRef = useRef<HTMLInputElement>(null);
   const userAgeInputRef = useRef<HTMLInputElement>(null);
-  const [getInputUsername, setInputUsername] = useState<string>("");
-  const [getInputAge, setInputAge] = useState<number>(Number);
   const [getIsError, setIsError] = useState<
     { error: boolean; title: string; message: string } | undefined
   >();
   const formSubmitHandler = (event: FormEvent) => {
     event.preventDefault();
-    if (getInputUsername.trim().length === 0 || getInputAge < 1) {
+    const enteredName: string = userNameInputRef.current!.value;
+    const enteredAge: number = parseInt(userAgeInputRef.current!.value);
+    if (enteredName.trim().length === 0 || enteredAge < 1) {
       setIsError({
         error: true,
         title: "Invalid Input",
@@ -22,19 +23,12 @@ export const Input: React.FC<{
       });
       return;
     }
-    props.getData(getInputUsername, getInputAge);
-    setInputUsername("");
-    setInputAge(Number);
+    props.getData(enteredName, enteredAge);
+    userNameInputRef.current!.value = "";
     userAgeInputRef.current!.value = "";
   };
-  const usernameInputHandler = (e: FormEvent) => {
-    setInputUsername((e.target as HTMLInputElement).value);
-  };
-  const userAgeInputHandler = (e: FormEvent) => {
-    setInputAge(parseInt((e.target as HTMLInputElement).value));
-  };
   return (
-    <div>
+    <React.Fragment>
       {getIsError && (
         <ErrorModal
           title={getIsError.title}
@@ -50,19 +44,17 @@ export const Input: React.FC<{
             className={classes.inputText}
             type="text"
             placeholder="Name"
-            value={getInputUsername}
-            onChange={usernameInputHandler}
+            ref={userNameInputRef}
           />
           <input
             className={classes.inputText}
             type="number"
             placeholder="Age"
             ref={userAgeInputRef}
-            onChange={userAgeInputHandler}
           />
           <button type="submit">Submit</button>
         </form>
       </Card>
-    </div>
+    </React.Fragment>
   );
 };

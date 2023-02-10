@@ -4,7 +4,6 @@ import classes from "./List.module.css";
 import { Card } from "../UI/Card";
 
 export const List: React.FC<{ items: Items[] }> = (props) => {
-  console.log(props.items);
   return (
     <div>
       {props.items.length !== 0 && (
