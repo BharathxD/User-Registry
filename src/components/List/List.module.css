@@ -1,0 +1,17 @@
+.ulList {
+    background-color: #505050;
+    padding: 10px;
+    border-radius: 10px;
+    list-style-type: none;
+}
+
+.ulList li {
+    background-color: #242424;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.ulList li:last-of-type {
+    margin-bottom: 0;
+}
