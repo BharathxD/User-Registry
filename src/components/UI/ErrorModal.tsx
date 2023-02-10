@@ -1,8 +1,8 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import { Card } from "./Card";
 import classes from "./ErrorModal.module.css";
 
-export const ErrorModal: React.FC<{title: string, message: string}> = (props) => {
+export const ErrorModal: React.FC<{title: string, message: string, isError: () => void}> = (props) => {
   return (
     <div className={classes.background}>
       <div className={classes.card}>
@@ -13,7 +13,7 @@ export const ErrorModal: React.FC<{title: string, message: string}> = (props) =>
           <p>{props.message}</p>
         </div>
         <footer>
-          <button>Close</button>
+          <button onClick={props.isError}>Close</button>
         </footer>
       </div>
     </div>
