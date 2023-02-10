@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FormEvent } from "react";
 import { Items } from "../Item";
 import classes from "./List.module.css";
 import { Card } from "../UI/Card";
@@ -11,7 +11,7 @@ export const List: React.FC<{ items: Items[] }> = (props) => {
           {props.items.map((data) => {
             return (
               <li key={data.id}>
-                {data.text} : {data.age}
+                {data.username} : {data.age}
               </li>
             );
           })}

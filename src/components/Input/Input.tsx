@@ -5,29 +5,25 @@ import { Card } from "../UI/Card";
 export const Input: React.FC<{
   getData: (text: string, age: number) => void;
 }> = (props) => {
-  const InputUseRef = useRef<HTMLInputElement>(null);
-  const InputNumberUseRef = useRef<HTMLInputElement>(null);
-  const [getInputUsername, setInput] = useState<string>("");
-  const [getInputAge, setInputAge] = useState<number>(0);
+  const userAgeInputRef = useRef<HTMLInputElement>(null);
+  const [getInputUsername, setInputUsername] = useState<string>("");
+  const [getInputAge, setInputAge] = useState<number>(Number);
   const formSubmitHandler = (event: FormEvent) => {
     event.preventDefault();
-    if (getInputUsername.trim().length === 0 || getInputAge === 0) {
-      
+    if (getInputUsername.trim().length === 0 || getInputAge < 1) {
+      return;
     }
     props.getData(getInputUsername, getInputAge);
-    InputUseRef.current!.value = "";
-    InputNumberUseRef.current!.value = "";
+    setInputUsername("");
+    setInputAge(Number);
+    userAgeInputRef.current!.value = '';
   };
-  const userAgeInputHandler = () => {
-    (e: FormEvent) => {
-      setInputAge(parseInt((e.target as HTMLInputElement).value));
-    }
-  }
-  const userNameInputHandler = () => {
-    (e: FormEvent) => {
-      setInput((e.target as HTMLInputElement).value);
-    }
-  }
+  const usernameInputHandler = (e: FormEvent) => {
+    setInputUsername((e.target as HTMLInputElement).value);
+  };
+  const userAgeInputHandler = (e: FormEvent) => {
+    setInputAge(parseInt((e.target as HTMLInputElement).value));
+  };
   return (
     <div>
       <Card>
@@ -35,15 +31,15 @@ export const Input: React.FC<{
           <input
             className={classes.inputText}
             type="text"
-            ref={InputUseRef}
             placeholder="Name"
-            onChange={userNameInputHandler}
+            value={getInputUsername}
+            onChange={usernameInputHandler}
           />
           <input
             className={classes.inputText}
             type="number"
             placeholder="Age"
-            ref={InputNumberUseRef}
+            ref={userAgeInputRef}
             onChange={userAgeInputHandler}
           />
           <button type="submit">Submit</button>
