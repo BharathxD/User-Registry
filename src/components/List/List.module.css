@@ -1,8 +1,7 @@
 .ulList {
-    background-color: #505050;
-    padding: 10px;
-    border-radius: 10px;
+    margin: 0;
     list-style-type: none;
+    padding: 0;
 }
 
 .ulList li {

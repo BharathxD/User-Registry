@@ -1,38 +1,54 @@
 import React, { FormEvent, useState, useRef } from "react";
 import classes from "./Input.module.css";
+import { Card } from "../UI/Card";
 
-export const Input: React.FC<{ getData: (text: string, age: number) => void }> = (props) => {
+export const Input: React.FC<{
+  getData: (text: string, age: number) => void;
+}> = (props) => {
   const InputUseRef = useRef<HTMLInputElement>(null);
   const InputNumberUseRef = useRef<HTMLInputElement>(null);
-  const [getInput, setInput] = useState<string>("");
-  const [getInputNumber, setInputNumber] = useState<number>(0);
+  const [getInputUsername, setInput] = useState<string>("");
+  const [getInputAge, setInputAge] = useState<number>(0);
   const formSubmitHandler = (event: FormEvent) => {
     event.preventDefault();
-    props.getData(getInput, getInputNumber);
+    if (getInputUsername.trim().length === 0 || getInputAge === 0) {
+      
+    }
+    props.getData(getInputUsername, getInputAge);
     InputUseRef.current!.value = "";
     InputNumberUseRef.current!.value = "";
   };
+  const userAgeInputHandler = () => {
+    (e: FormEvent) => {
+      setInputAge(parseInt((e.target as HTMLInputElement).value));
+    }
+  }
+  const userNameInputHandler = () => {
+    (e: FormEvent) => {
+      setInput((e.target as HTMLInputElement).value);
+    }
+  }
   return (
     <div>
-      <form onSubmit={formSubmitHandler} className={classes.form}>
-        <input
-          className={classes.inputText}
-          type="text"
-          ref={InputUseRef}
-          onChange={(e: FormEvent) => {
-            setInput((e.target as HTMLInputElement).value);
-          }}
-        />
-        <input
-          className={classes.inputText}
-          type="number"
-          ref={InputNumberUseRef}
-          onChange={(e: FormEvent) => {
-            setInputNumber(parseInt((e.target as HTMLInputElement).value));
-          }}
-        />
-        <button type="submit">Submit</button>
-      </form>
+      <Card>
+        <form onSubmit={formSubmitHandler} className={classes.form}>
+          <input
+            className={classes.inputText}
+            type="text"
+            ref={InputUseRef}
+            placeholder="Name"
+            onChange={userNameInputHandler}
+          />
+          <input
+            className={classes.inputText}
+            type="number"
+            placeholder="Age"
+            ref={InputNumberUseRef}
+            onChange={userAgeInputHandler}
+          />
+          <button type="submit">Submit</button>
+        </form>
+      </Card>
     </div>
   );
 };

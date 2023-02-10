@@ -6,8 +6,8 @@ import { Items } from "./components/Item";
 
 function App() {
   const [getItem, setItem] = useState<Items[]>([]);
-  const setDataHandler = (text: string, age: number) => {
-    const newItem = new Items(text, age);
+  const setDataHandler = (name: string, age: number) => {
+    const newItem = new Items(name, age);
     setItem((data) => {
       return data.concat(newItem);
     });
